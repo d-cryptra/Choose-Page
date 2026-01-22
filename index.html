@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Choose Destination</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Browser icon -->
+  <link rel="icon" type="image/png" href="logo2.png" />
+
+  <style>
+    :root{
+      --brand:#3364fe;
+      --brandDark:#254edc;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --shadow: 0 18px 45px rgba(16, 24, 40, 0.12);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html, body { height:100%; }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* Background decorations */
+    .bg{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    /* LEFT decorative image */
+    .bg::before{
+      content:"";
+      position:absolute;
+      left:-180px;
+      top:45%;
+      width:900px;
+      height:900px;
+      background-image: url("image.png");
+      background-repeat:no-repeat;
+      background-size: contain;
+      opacity:0.14;
+      transform: rotate(-6deg) translateY(-50%);
+    }
+
+    /* RIGHT decorative image (top-right corner) */
+    .bg::after{
+      content:"";
+      position:absolute;
+      right:-180px;
+      top:-140px;
+      width:700px;
+      height:700px;
+      background-image: url("image.png");
+      background-repeat:no-repeat;
+      background-size: contain;
+      opacity:0.10;
+      transform: rotate(12deg);
+    }
+
+    /* Layout */
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 26px 16px;
+      position:relative;
+      z-index:1;
+    }
+
+    .card{
+      width: min(420px, 92vw);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      border: 1px solid rgba(17, 24, 39, 0.06);
+    }
+
+    /* top accent bar */
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:6px;
+      background: var(--brand);
+    }
+
+    /* ❌ removed image.png from card background */
+
+    .inner{
+      padding: 26px 22px 18px;
+      text-align:center;
+      position:relative;
+      z-index:1;
+    }
+
+    .brand-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-top: 6px;
+      margin-bottom: 14px;
+    }
+
+    .brand-mini{
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .brand-title{
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .logo{
+      max-width: 190px;
+      width: 100%;
+      height: auto;
+      margin: 6px auto 12px;
+      display:block;
+    }
+
+    h1{
+      margin: 10px 0 18px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .btns{
+      display:grid;
+      gap:12px;
+      margin-top: 10px;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      text-decoration:none;
+      font-size: 16px;
+      font-weight: 700;
+      background: var(--brand);
+      color:#fff;
+      border: 1px solid rgba(0,0,0,0);
+      transition: transform 0.08s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 18px rgba(51,100,254,0.22);
+    }
+
+    .btn:hover{ background: var(--brandDark); transform: translateY(-1px); }
+
+    .btn.secondary{
+      background: transparent;
+      color: var(--brand);
+      border: 2px solid var(--brand);
+      box-shadow:none;
+    }
+
+    .btn.secondary:hover{
+      background: rgba(51,100,254,0.08);
+      color: var(--brandDark);
+      border-color: var(--brandDark);
+    }
+
+    .icon{
+      width:18px;
+      height:18px;
+      display:inline-block;
+    }
+
+    .note{
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 420px){
+      .inner{ padding: 22px 16px 16px; }
+      h1{ font-size: 20px; }
+
+      .bg::before{
+        width:700px;
+        left:-260px;
+        top:55%;
+      }
+
+      .bg::after{
+        width:500px;
+        right:-260px;
+        top:-220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="inner">
+
+        <!-- Top mini brand -->
+        <div class="brand-row">
+          <div class="brand-title">Choose Destination</div>
+        </div>
+
+        <!-- Main logo -->
+        <img src="logo.png" alt="Company Logo" class="logo" />
+
+        <h1>Choose where to go</h1>
+
+        <div class="btns">
+          <!-- Replace these links -->
+          <a class="btn" href="https://www.dcryptra.com/" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20Z" stroke="white" stroke-width="2"/>
+              <path d="M2 12h20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 2c3 3 3 17 0 20M12 2c-3 3-3 17 0 20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Website
+          </a>
+
+          <a class="btn secondary" href="https://drive.google.com/file/d/1RGUTEnZeAjgpBH7ixOlAAjl9VI0fXKEV/view?usp=drive_link" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M14 3v4a1 1 0 0 0 1 1h4" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 12h8M8 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Proposal
+          </a>
+        </div>
+
+        <div class="note">Powered by D-Cryptra</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
